@@ -5,7 +5,7 @@ Hiking catalog was a project I did as student enrolled in [Udacity's Fullstack N
 The Hiking Catalog is a RESTful web application that provides a list of hiking trails from a variety of locations. This application uses the Python framework Flask along with implementing third-party OAuth authentication and user registration. If the user is authenticated through Google or Facebook they will have the ability to create new hiking trails and edit or delete their posts.
 
 ## Resources Used
-[Udacity's Restaurant App - followed as learning resource](https://www.udacity.com/course/full-stack-foundations--ud088)
+[Udacity's Restaurant App](https://www.udacity.com/course/full-stack-foundations--ud088) - followed as learning resource
 
 [Images](https://unsplash.com)
 
