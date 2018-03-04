@@ -1,0 +1,4 @@
+1.	Fix Styling
+2.	OAuth - Logins
+		- facebok
+3.	Style Login interstitial page
