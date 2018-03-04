@@ -1,0 +1,12 @@
+<aside class="locations-section locations-wrapper">
+	<div class="section-header">
+		<h2 class='section-header'>Locations</h2>
+	</div>
+	{% for location in locations %}
+
+	<a href="{{url_for('showTrails', location_id=location.id)}}" class='location'>
+		<p>{{location.country}}</p>
+	</a>
+
+	{% endfor %}
+</aside>

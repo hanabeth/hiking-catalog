@@ -1,0 +1,32 @@
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='common.css') }}">
+<div class="main-wrapper main-contents-panel">
+	<h1>{{trail.trailName}}</h1>
+	<div class="heading-wrapper">
+		<a href="{{url_for('showLocations')}}" class="top-link">
+			Main Page
+		</a>
+	</div><br><br>
+	<h2>Edit Trail</h2>
+	<section class="trail-details-section">
+		<form method="post" action="{{url_for('editTrail', location_id=location_id, trail_id=trail.id)}}">
+			<label>Trail Name:</label>
+				<input class="form-control" type="text" name="trailName" value="{{trail.trailName}}"><br>
+
+			<label>Province:</label>
+				<input class="form-control" type="text" name="province" value="{{trail.province}}"><br>
+
+			<label>Peak/Park:</label>
+				<input class="form-control" type="text" name="park" value="{{trail.park}}"><br>
+
+			<label>Website:</label>
+				<input class="form-control" type="text" name="website" value="{{trail.website}}"><br><br>
+
+			<label>Description:</label><br>
+				<textarea class="form-control" maxlength="250" rows="3" name="description">
+					{{trail.description}}
+				</textarea><br><br>
+				<input type="submit" value="Update">
+				<a href="{{url_for('showTrailDetails', location_id=location_id, trail_id=trail.id)}}">Cancel</a>
+		</form>
+	</section>
+</div>

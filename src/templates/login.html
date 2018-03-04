@@ -1,0 +1,118 @@
+{% extends "catalogMain.html" %}
+{% block content %}
+<div class='login'>
+	<!-- Google sign-in button -->
+	<div id="googleLoginButton">
+		<span class="g-signin"
+			data-scope="openid email"
+			data-clientid="278308181715-7jdehqop9kuuh14cdfv0chfakmu5aijf.apps.googleusercontent.com"
+			data-redirecturi="postmessage"
+			data-accesstype="offline"
+			data-cookiepolicy="single_host_origin"
+			data-callback="loginCallback"
+			data-approvalprompt="force"
+		></span>
+		<div class="googleLoginResult"></div>
+	</div>
+
+	<!-- Facebook sign-in button -->
+	 <div>
+        <fb:login-button scope="public_profile,email" onlogin="sendTokenToServer();">
+            <a href='javascript:sendTokenToServer()'>Login with Facebook</a>
+        </fb:login-button>
+        <div id="facebookLoginResult"></div>
+    </div>
+
+
+
+
+	<!-- Google login scripts.  -->
+	<script>
+		function loginCallback(authResult) {
+			// If authorized, hide login button.
+			if (authResult['code']) {
+				// Hide sign-in button now user is logged-in.
+				$('#googleLoginButton').attr('style', 'display: none');
+				// Send one-time token to the server.
+				$.ajax({
+					type: 'POST',
+					url: '/gconnect?state={{STATE}}',
+					processData: false,
+					data: authResult['code'],
+					contentType: 'application/octet-stream; charset=utf-8',
+					success: function(result) {
+						if (result) {
+							$('#googleLoginResult').html('Logged In...</br> Redirecting... ')
+							setTimeout(function() {
+								window.location.href = '/locations/';
+							}, 4000);
+						} else if (authResult['error']) {
+							console.log('An error occurred: ' + authResult['error']);
+						} else {
+							$('#googleLoginResult').html('A server-side error occurred.');
+						}
+					}
+				});
+			}
+		}
+	</script>
+	<!-- End of Google login.  -->
+
+
+
+		<!-- Start of Facebook login. -->
+		<script>
+		  window.fbAsyncInit = function() {
+		    FB.init({
+		      appId      : '602273660107881',
+		      cookie     : true,	// allow server access
+		      xfbml      : true,	// parse social plugins
+		      version    : 'v2.12'	// version of API is 2.12
+		    });
+		  };
+
+		  // Async load the SDK.
+		  (function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s);
+		  js.id = id;
+		  js.src = '//connect.facebook.net/en_US/sdk.js';
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+
+
+		function sendTokenToServer() {
+			var access_token = FB.getAuthResponse()['accessToken']
+			console.log(access_token)
+			console.log('Welcome! Loading your data...')
+
+			FB.api('/me', function(response) {
+		  		console.log('Welcome, ', response.name);
+		  		$.ajax({
+		  			type: 'POST',
+		  			url: '/fbconnect?state={{STATE}}',
+		  			processData: false,
+		  			data: access_token,
+		  			contentType: 'application/octet-stream; charset=utf-8',
+		  			success: function(result) {
+		  				console.log('yay in sucuess!')
+		  				if (result) {
+		  					console.log('result is!!! ', result)
+		  					$('#facebookLoginResult').html('You have successfully logged in.')
+		  					setTimeout(function() {
+		  						window.location.href = '/locations/';
+		  					}, 4000);
+		  				} else {
+		  					console.log('apparently there was no result. So in the else block of the login page markup.')
+		  					$('#facebookLoginResult').html('Failed to make a server-side call.');
+		  				}
+		  			}
+		  		});
+		  	});
+		}
+	</script>
+	<!-- End of Facebook login.  -->
+
+</div>
+{% endblock %}

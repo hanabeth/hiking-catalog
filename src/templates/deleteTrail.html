@@ -1,0 +1,6 @@
+<form method="post" action="{{url_for('deleteTrail', location_id=location_id, trail_id=trail.id)}}">
+	<label>Delete {{trail.trailName}}?</label>
+	<br><br>
+	<input type="submit" value="Delete">
+	<a href="{{url_for('showTrails', location_id=location_id)}}">Cancel</a>
+</form>

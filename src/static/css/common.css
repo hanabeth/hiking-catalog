@@ -1,0 +1,83 @@
+/**********************************************************************/
+/* Common template styling needed for consistent layout on the pages. */
+/**********************************************************************/
+html, body {
+	height: 100%;
+	margin: 0;
+	background: url(images/mountains.jpg);
+	background-size: cover;
+}
+
+a {
+	text-decoration: none;
+	color: #505050;
+}
+
+.catalog-sections {
+	padding: 5px 10px 20px 10px;
+	height: auto;
+}
+
+.section-header {
+	margin: 10px;
+	margin-left: 0;
+}
+
+.items-list {
+	padding: 0 5px;
+	display: flex;
+    flex-flow: column wrap;
+	align-items: baseline;
+}
+
+.items {
+	padding: 8px 10px;
+}
+
+.items:hover {
+	background-color: rgba(255, 255, 255, 0.9);
+	border: 1px rgba(0, 0, 0, 0.7) solid;
+	font-style: italic;
+}
+
+
+/* Catalog Main */
+.main-wrapper {
+	padding: 20px;
+	max-width: 100%;
+}
+
+.main-contents-panel {
+	background-color: rgba(255, 255, 255, 0.4);
+	margin: 10px;
+	width: auto;
+	text-align: center;
+	display: flex;
+	flex-flow: column wrap;
+	box-shadow: 1px 2px 3px rgba(192, 192, 192, 0.4);
+	box-shadow: inset 0 0 4px #000000;
+	border-radius: 10px;
+}
+
+.sections {
+	display: flex;
+	flex-flow: row wrap;
+	font-family: 'Montserrat Alternates', sans-serif;
+	list-style: none;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.7);
+	font-family: 'Muli', sans-serif;
+	color: #505050;
+	border-radius: 0 0 10px 10px;
+}
+
+.categories-wrapper {
+	border-right: 1px solid black;
+	width: 200px;
+}
+
+.latest-items-wrapper {
+	width: 400px;
+}
+
+

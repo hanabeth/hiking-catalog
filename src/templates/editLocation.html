@@ -1,0 +1,6 @@
+<form method="post" action="{{url_for('editLocation', location_id=location.id)}}">
+	<label>Country Name:</label>
+	<input type="text" name="country" value={{location.country}}><br><br>
+	<input type="submit" value="Update">
+	<a href="{{url_for('showLocations')}}">Cancel</a>
+</form>

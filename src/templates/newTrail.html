@@ -1,0 +1,20 @@
+<form method="post" action="{{url_for('newTrail', location_id=location_id)}}">
+	<label>Trail Name:</label>
+	<input type="text" name="trailName" placeholder="Trail Name"><br>
+
+	<label>Province:</label>
+	<input type="text" name="province" placeholder="province/state"><br>
+
+	<label>Peak/Park:</label>
+	<input type="text" name="park" placeholder="park"><br>
+
+	<label>Website:</label>
+	<input type="text" name="website" placeholder="Trails Website"><br><br>
+
+	<label>Description:</label><br>
+	<textarea type="text" name="description"></textarea>
+
+	<br><br>
+	<input type="submit" value="Create">
+	<a href="{{url_for('showTrails', location_id=location_id)}}">Cancel</a>
+</form>

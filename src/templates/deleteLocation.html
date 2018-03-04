@@ -1,0 +1,6 @@
+<form method="post" action="{{url_for('deleteLocation', location_id=location.id)}}">
+	<label>Delete {{location.country}}?</label>
+	</br>
+	<input type="submit" value="Delete">
+	<a href="{{url_for('showLocations')}}">Cancel</a>
+</form>

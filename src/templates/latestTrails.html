@@ -1,0 +1,14 @@
+<aside class="category-sections latest-trails-wrapper">
+	<div class="section-header">
+		<h2 class='section-header'>Latest Trails</h2>
+	</div>
+
+	<div class="latest-trails-list">
+		{% for trail in trails %}
+		<a href="{{url_for('showTrailDetails', trail_id=trail.id, location_id=trail.location_id)}}">
+			<p class="latest-trail">{{trail.trailName}}</p>
+		</a>
+		{% endfor %}
+	</div>
+
+</aside>

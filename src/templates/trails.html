@@ -1,0 +1,35 @@
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='common.css') }}">
+<div class='main-wrapper main-contents-panel'>
+	<h1>{{location.country}}</h1>
+		<div class='heading-wrapper'>
+			<a href="{{url_for('newTrail', location_id=location.id)}}" class="top-link">
+				Add a New Trail
+			</a>
+			<a href="{{url_for('editLocation', location_id=location.id)}}" class="top-link">
+				Edit Location
+			</a>
+			<a href="{{url_for('deleteLocation', location_id=location.id)}}" class="top-link">
+				Delete Location
+			</a>
+			<a href="{{url_for('showLocations')}}" class="top-link">
+				Main Page
+			</a>
+		</div>
+	{% if trails != [] %}
+		</br></br>
+		<h2>Hiking Trails</h2>
+		<div class='trails-list'>
+		{% for trail in trails %}
+			<a href="{{url_for('showTrailDetails', location_id=location.id, trail_id=trail.id)}}" class='trail'>
+				{{trail.trailName}}
+			</a>
+		{% endfor %}
+		</div>
+
+		{% else %}
+		<p>No hiking trails have been added yet for this location.</p>
+		<a href="{{url_for('newTrail', location_id=location.id)}}">
+			Create a New Hiking Trail
+		</a>
+		{% endif %}
+</div>

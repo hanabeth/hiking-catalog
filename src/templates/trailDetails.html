@@ -1,0 +1,35 @@
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='common.css') }}">
+<div class="main-wrapper main-contents-panel">
+	<h1>{{trail.trailName}}</h1>
+	<div class="heading-wrapper">
+		<a href="{{url_for('editTrail', location_id=location_id, trail_id=trail.id)}}" class="top-link">
+			Edit Trail
+		</a>
+		<a href="{{url_for('deleteTrail', location_id=location_id, trail_id=trail.id)}}" class="top-link">
+			Delete Trail
+		</a>
+		<a href="{{url_for('showLocations')}}" class="top-link">
+			Main Page
+		</a>
+	</div><br><br>
+	<h2>Details</h2>
+	<section class="trail-details-section">
+		<ul class="trail-details-list">
+			<li class="trail-location">
+				<p>
+					{{trail.park}}, {{trail.province}}
+				</p>
+			</li>
+			<li class="trail-description">
+				<p>
+					{{trail.description}}
+				</p>
+			</li>
+			<li class="trail-website">
+				<a href={{trail.website}}>
+					Website
+				</a>
+			</li>
+		</ul>
+	</section>
+</div>
